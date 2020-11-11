@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity /* Anotação para gerar uma tabela no BD */
 @Table(name = "tb_user")
 public class User implements Serializable {
@@ -25,6 +27,7 @@ public class User implements Serializable {
 	private String phone;
 	private String password;
 	
+	@JsonIgnore /* para impedir que a construção do JSON entre em loop infinito*/
 	@OneToMany(mappedBy = "client") /* tipo de relacionamento: um para muitos */
 	private List<Order> orders = new ArrayList<>();
 	

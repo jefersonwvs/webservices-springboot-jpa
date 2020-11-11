@@ -11,8 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity /* anotação que indica que a classe corresponde a uma tabela do BD */
-@Table(name = "tb_order") /* renomeando a tabela para evitar conflito com a palavras reservada Order do SQL */
+@Table(name = "tb_order") /* renomeando a tabela para evitar conflito com a palavra reservada Order do SQL */
 public class Order implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -20,6 +23,8 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant instant;
 	
 	@ManyToOne /* tipo de relacionamento: muitos para um */
