@@ -7,13 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity /* Anotação para gerar uma tabela no BD */
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id /* Identifica a chave primária */
+	@GeneratedValue(strategy = GenerationType.IDENTITY) /* configura a PK com auto_increment */
 	private Long id;
 	private String name;
 	private String email;

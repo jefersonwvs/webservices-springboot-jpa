@@ -6,12 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-
 import com.example.demo.entities.User;
 import com.example.demo.respositories.UserRepository;
 
-@Configuration
-@Profile("test")
+@Configuration /* anotação que indica ao framework que se trata de uma classe de configuração */
+@Profile("test") /* definição do nome do perfil usado */
 public class TestConfig implements CommandLineRunner {
 	
 	@Override
