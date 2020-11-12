@@ -8,8 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_product")
@@ -25,10 +29,16 @@ public class Product implements Serializable {
 	private Double price;
 	private String imgUrl;
 	
-	/* neste caso não foi usado um List<T> para garantir, através de 
-	Set<T>, que cada Product não tenha duas categorias iguais*/
-	@Transient
-	private Set<Category> categories = new HashSet<>();
+	
+	@ManyToMany /* associação muitos para muitos */
+	@JoinTable( /* criação de uma tabela para mapear o relacionamento N:N entre Product e Category */
+			name = "tb_product_category", 
+			joinColumns = @JoinColumn(name = "product_id"), // nome da chave estrangeira para Product
+			inverseJoinColumns = @JoinColumn(name = "category_id") // nome da chave estrangeira para Category
+			)
+	private Set<Category> categories = new HashSet<>(); /* neste caso não foi usado um List<T> para garantir, através de Set<T>, que cada Product não tenha duas categorias iguais*/
+	
+	
 	
 	public Product() {
 	}
