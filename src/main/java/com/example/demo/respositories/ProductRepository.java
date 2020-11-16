@@ -9,7 +9,7 @@ import com.example.demo.entities.Product;
  * Implementa os padrões de injeção de dependência.
  * */
 @Repository /* registra a classe como repositório, para que o Spring faça a injeção de dependência.
-No entanto, a anotação é opcional, pois sua superclasse já está registrada */
+No entanto, diferente de um service, a anotação aqui é opcional, pois sua superclasse já está registrada */
 public interface ProductRepository extends JpaRepository<Product, Long>{
 
 }

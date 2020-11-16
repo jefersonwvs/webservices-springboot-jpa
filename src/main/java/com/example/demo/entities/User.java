@@ -30,9 +30,8 @@ public class User implements Serializable {
 	@JsonIgnore /* para impedir que a construção do JSON entre em loop infinito*/
 	@OneToMany(mappedBy = "client") /* tipo de relacionamento: um para muitos */
 	private List<Order> orders = new ArrayList<>();
-	
-	public User() {
-	}
+
+	public User() { }
 
 	public User(Long id, String name, String email, String phone, String password) {
 		super();

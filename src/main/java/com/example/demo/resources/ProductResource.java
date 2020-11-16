@@ -26,7 +26,8 @@ public class ProductResource {
 	}
 	
 	@GetMapping(value = "/{id}") /* anotação de método get com argumento */
-	public ResponseEntity<Product> findById(@PathVariable Long id) { /* anotação que indica onde usar o argumento */
+	public ResponseEntity<Product> findById(@PathVariable /* anotação que indica onde usar o argumento */
+											Long id) {
 		Product obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}

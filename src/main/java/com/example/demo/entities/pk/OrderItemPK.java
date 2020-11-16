@@ -9,17 +9,17 @@ import javax.persistence.ManyToOne;
 import com.example.demo.entities.Order;
 import com.example.demo.entities.Product;
 
-@Embeddable
+@Embeddable /* Faz com que a classe possa ser incorporada em alguma tabela */
 public class OrderItemPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	@JoinColumn(name = "order_id")
+	@ManyToOne /* Relacionamento N:1 */
+	@JoinColumn(name = "order_id") /* Adição de uma coluna na tabela em que esta entidade está incorporada */ 
 	private Order order;
 	
-	@ManyToOne
-	@JoinColumn(name = "product_id")
+	@ManyToOne /* Relacionamento N:1 */
+	@JoinColumn(name = "product_id") /* Adição de uma coluna na tabela em que esta entidade está incorporada */
 	private Product product;
 
 	public Order getOrder() {
