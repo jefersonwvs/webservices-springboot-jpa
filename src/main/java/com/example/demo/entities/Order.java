@@ -81,7 +81,6 @@ public class Order implements Serializable {
 		this.client = client;
 	}
 	
-	
 	public OrderStatus getOrderStatus() {
 		return OrderStatus.valueOf(orderStatus);
 	}
@@ -106,6 +105,14 @@ public class Order implements Serializable {
 
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+	
+	public Double getTotal() {
+		double sum = 0.0;
+		for (OrderItem obj : items) {
+			sum += obj.getSubTotal();
+		}
+		return sum;
 	}
 
 	@Override
